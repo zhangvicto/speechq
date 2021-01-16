@@ -57,4 +57,6 @@ function startQ(str) {
 
 function speechLength(str) {
     document.getElementById("length").innerHTML= str.length;
+    document.getElementById("speech-time-sec").innerHTML= Math.round(str.length/130*60);
+    document.getElementById("speech-time-min").innerHTML= Math.round(str.length/130);
 }
