@@ -63,3 +63,7 @@ function speechLength(str) {
     document.getElementById("speech-time-sec").innerHTML= Math.round(str.length/130*60);
     document.getElementById("speech-time-min").innerHTML= Math.round(str.length/130);
 }
+
+function showTy() {
+    document.getElementById("ty").style.display = "block";
+}
