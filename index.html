@@ -18,8 +18,8 @@
 
 <div class="container">
   Input your speech/script here:
-  <input type="text" id="inbox">
-  <button id="startButton" onclick="console.log("yes")">Start</button>
+  <input onkeypress="if(event.key == 'Enter') {begin()}" type="text" id="inbox">
+  <button id="startButton" onclick="begin()">Start</button>
 </div>
 
 
