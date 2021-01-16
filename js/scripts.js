@@ -15,7 +15,12 @@ var final_transcript = '';
 function begin() { 
     var textbox = document.getElementById("inbox").value; 
     console.log(textbox); //test
-    var str = textbox.split(" ");
+    var str0 = textbox.match(/[^_\W]+/g).join(' ');
+    console.log(str0);
+    var str1 = str0.toLowerCase();
+    var str = str1.split(" ");
+
+    console.log(str);
 
     speechLength(str);
 
@@ -39,13 +44,22 @@ function listen(str) {
       } else {
         interim_transcript += event.results[i][0].transcript;
         //test
-        document.getElementById("q0").innerHTML= interim_transcript;
-        if (interim_transcript = str[0]) {
+        //document.getElementById("q0").innerHTML= interim_transcript;
+
+        let j = 0;
+        console.log(str[j].localeCompare(interim_transcript));
+        console.log(interim_transcript);
+        console.log(str[j]);
+
+        if (str[j].localeCompare(interim_transcript) === 0) {
             startQ(str);
+            j++;
         }
 
       }
     }
+
+    console.log(final_transcript);
     //final_transcript = capitalize(final_transcript);
     //final_span.innerHTML = linebreak(final_transcript);
     //interim_span.innerHTML = linebreak(interim_transcript);
@@ -54,8 +68,9 @@ function listen(str) {
 
 function startQ(str) {
     //print the array on html
-    document.getElementById("q0").innerHTML= str[i];
-
+    document.getElementById("q0").innerHTML= str[0];
+    document.getElementById("q1").innerHTML= str[1];
+    document.getElementById("q2").innerHTML= str[2];
 }
 
 function speechLength(str) {
@@ -66,4 +81,5 @@ function speechLength(str) {
 
 function showTy() {
     document.getElementById("ty").style.display = "block";
+    recognition.stop();
 }
