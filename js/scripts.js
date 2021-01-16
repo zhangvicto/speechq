@@ -22,13 +22,13 @@ function begin() {
 
     console.log(str);
 
-    createList(str);
+    let node = createList(str);
 
     speechLength(str);
 
     recognition.lang = 'en-US';
     recognition.start();
-    listen(str);
+    listen(str, node);
 
     document.getElementById("textbox").style.display = "none";
     document.getElementById("stats").style.display = "block";
@@ -36,7 +36,7 @@ function begin() {
     //need some condition and then nextWord(); //find next word
 }
 
-function listen(str) {
+function listen(str, node) {
     recognition.onresult = function(event) {
     var interim_transcript = '';
 
@@ -48,15 +48,13 @@ function listen(str) {
         //test
         //document.getElementById("q0").innerHTML= interim_transcript;
 
-        let j = 0;
-        console.log(str[j].localeCompare(interim_transcript));
-        console.log(interim_transcript);
-        console.log(str[j]);
+        //console.log(node.val.localeCompare(interim_transcript));
+        //console.log(interim_transcript);
+        //console.log(node.val);
         
         //compare value
-        if (str[j].localeCompare(interim_transcript.trim()) === 0) {
-            startQ(str);
-            j++;
+        if (node.val.localeCompare(interim_transcript.trim()) === 0) {
+            startQ(str, node);
         }
 
       }
@@ -69,13 +67,13 @@ function listen(str) {
   };
 }
 
-function startQ(str) {
+function startQ(str, node) {
     //print the array on html
-    document.getElementById("q0").innerHTML= str[0];
-    document.getElementById("q1").innerHTML= str[1];
-    document.getElementById("q2").innerHTML= str[2];
-    document.getElementById("q3").innerHTML= str[3];
-    document.getElementById("q4").innerHTML= str[4];
+    document.getElementById("q0").innerHTML= node.val;
+    document.getElementById("q1").innerHTML= node.next.val;
+    document.getElementById("q2").innerHTML= node.next.next.val;
+    document.getElementById("q3").innerHTML= node.next.next.next.val;
+    document.getElementById("q4").innerHTML= node.next.next.next.next.val;
 }
 
 function speechLength(str) {
