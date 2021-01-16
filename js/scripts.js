@@ -20,7 +20,7 @@ function begin() {
 
     //print the array on html
     for(let i=0;i<str.length;i++) {
-        document.getElementById(output).innerHTML= str[i];
+        document.getElementById("output").innerHTML= str[i];
     }
 
     recognition.start();
