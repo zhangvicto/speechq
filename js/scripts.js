@@ -17,7 +17,7 @@ function begin() {
     console.log(textbox); //test
     var str = textbox.split(" ");
 
-    
+    speechLength(str);
 
     recognition.lang = 'en-US';
     recognition.start();
@@ -35,7 +35,8 @@ function listen(str) {
         final_transcript += event.results[i][0].transcript;
       } else {
         interim_transcript += event.results[i][0].transcript;
-        document.getElementById("output").innerHTML= interim_transcript;
+        //test
+        document.getElementById("q0").innerHTML= interim_transcript;
         if (interim_transcript = str[0]) {
             startQ(str);
         }
@@ -50,7 +51,10 @@ function listen(str) {
 
 function startQ(str) {
     //print the array on html
-    for(let i=0;i<str.length;i++) {
-       document.getElementById("output").innerHTML= str[i];
-    }
+    document.getElementById("q0").innerHTML= str[i];
+
+}
+
+function speechLength(str) {
+    document.getElementById("length").innerHTML= str.length;
 }
