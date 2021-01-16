@@ -12,17 +12,23 @@ body {
     width:100%;
 }
 
-footer {
+.foot {
     font-family: 'Quicksand', sans-serif;
     font-weight: 700;
     text-align: center;
     text-decoration: none;
     color:black;
     height:30px;
+
+    position: absolute;
+    width:200px;
+    margin-left:-100px;
+    left:50%;
+    bottom:10px;
 }
 
 .container {
-    height:95vh;
+    height:100%;
     text-align: center;
     position: relative;
 }
@@ -32,6 +38,24 @@ footer {
     top: 50%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+    width:100%;
+}
+
+.page-button {
+    border: none;
+    box-shadow: ;
+}
+
+input[type=text] {
+    border-radius: 10px;
+    box-shadow: none;
+    border-style: solid;
+    width:50%;
+    height:20vh;
+}
+
+#stats {
+    display: none;
 }
 
 #output {
@@ -39,7 +63,7 @@ footer {
 }
 
 #q0 {
-    font-size: 3vh;
+    font-size: 3vw;
 }
 
 #q1 {

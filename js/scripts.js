@@ -23,6 +23,9 @@ function begin() {
     recognition.start();
     listen(str);
 
+    document.getElementById("textbox").style.display = "none";
+    document.getElementById("stats").style.display = "block";
+
     //need some condition and then nextWord(); //find next word
 }
 

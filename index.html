@@ -18,15 +18,22 @@
 
 <div class="container">
   <!-- Textbox -->
-    <div class="textbox">
-    Input your speech/script here:<br>
+    <div class="textbox" id="textbox">
+    Input your speech/script here:<br><br>
     <input onkeypress="if(event.key == 'Enter') {begin()}" type="text" id="inbox">
-    <button id="startButton" onclick="begin()">Start</button>
-
+    <br><br>
+    <button class="page-button" id="startButton" onclick="begin()">Start</button>
+    </div>
     <br>
-    Length of yoru transcript is: <div id="length">-</div> words.
-    It will take about<div id="speech-time-min">-</div> minutes or <div id="speech-time-sec"></div> seconds to finish.
 
+    <div id="stats">
+      
+      Length of your script is:  <span id="length">-</span> word(s). <br>
+      It will take about <span id="speech-time-min">-</span> minute(s) or <span id="speech-time-sec">-</span> second(s) to finish.
+  
+      <button class="page-button" onClick="window.location.reload();">Restart</button>
+    </div>
+   
     <!-- Output --> 
     <div id="output">
 
@@ -52,14 +59,14 @@
 
     </div>
   
-  
-  </div>
+    <div class="foot">Victor 2020 <a href="https://github.com/zhangvicto/speechq"><img src="./img/25231.png" height=20px></a></div>
+
 </div>
 
 
 
   <script src="js/scripts.js"></script>
 
-  <footer><a href="https://github.com/zhangvicto/speechq">Github</a></footer>
+  
 </body>
 </html>
