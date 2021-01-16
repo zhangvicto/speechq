@@ -17,9 +17,16 @@
 <body>
 
 <div class="container">
-  Input your speech/script here:
+  <div class="textbox">
+    Input your speech/script here:<br>
   <input onkeypress="if(event.key == 'Enter') {begin()}" type="text" id="inbox">
   <button id="startButton" onclick="begin()">Start</button>
+  </div>
+  
+  <!-- Output (remember to change default to hidden) --> 
+  <div class="output">
+
+  </div>
 </div>
 
 

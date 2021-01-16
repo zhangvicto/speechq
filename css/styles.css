@@ -20,9 +20,40 @@ footer {
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height:95vh;
     text-align: center;
+    position: relative;
+}
+
+.textbox {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.output {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+}
+
+.q0 {
+    font-size: 10vh;
+}
+
+#q1 {
+
+}
+
+#q2 {
+
+}
+
+#q3 {
+
+}
+
+#q4 {
+
 }
