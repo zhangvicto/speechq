@@ -10,15 +10,14 @@ if (!('webkitSpeechRecognition' in window)) {
     recognition.interimResults = true;
 }
 
+var final_transcript = '';
+
 function begin() { 
     var textbox = document.getElementById("inbox").value; 
     console.log(textbox); //test
     var str = textbox.split(" ");
 
-    //print the array on html
-    //for(let i=0;i<str.length;i++) {
-    //    document.getElementById("output").innerHTML= str[i];
-    //}
+    
 
     recognition.lang = 'en-US';
     recognition.start();
@@ -36,17 +35,22 @@ function listen(str) {
         final_transcript += event.results[i][0].transcript;
       } else {
         interim_transcript += event.results[i][0].transcript;
+        document.getElementById("output").innerHTML= interim_transcript;
         if (interim_transcript = str[0]) {
             startQ(str);
         }
+
       }
     }
-    final_transcript = capitalize(final_transcript);
-    final_span.innerHTML = linebreak(final_transcript);
-    interim_span.innerHTML = linebreak(interim_transcript);
+    //final_transcript = capitalize(final_transcript);
+    //final_span.innerHTML = linebreak(final_transcript);
+    //interim_span.innerHTML = linebreak(interim_transcript);
   };
 }
 
 function startQ(str) {
-    
+    //print the array on html
+    for(let i=0;i<str.length;i++) {
+       document.getElementById("output").innerHTML= str[i];
+    }
 }
