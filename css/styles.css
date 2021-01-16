@@ -61,6 +61,7 @@ body {
 
 input[type=text] {
     border-radius: 10px;
+    border-color:#7F7FD5;;
     box-shadow: none;
     border-style: solid;
     width:50%;
@@ -80,21 +81,21 @@ input[type=text] {
 }
 
 #q0 {
-    font-size: 3vw;
+    font-size: 2vw;
 }
 
 #q1 {
-
+    font-size: 4vw;
 }
 
 #q2 {
-
+    font-size: 2vw;
 }
 
 #q3 {
-
+    font-size: 2vw;
 }
 
 #q4 {
-
+    font-size: 2vw;
 }

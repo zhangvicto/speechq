@@ -22,6 +22,8 @@ function begin() {
 
     console.log(str);
 
+    createList(str);
+
     speechLength(str);
 
     recognition.lang = 'en-US';
@@ -50,8 +52,9 @@ function listen(str) {
         console.log(str[j].localeCompare(interim_transcript));
         console.log(interim_transcript);
         console.log(str[j]);
-
-        if (str[j].localeCompare(interim_transcript) === 0) {
+        
+        //compare value
+        if (str[j].localeCompare(interim_transcript.trim()) === 0) {
             startQ(str);
             j++;
         }
@@ -71,6 +74,8 @@ function startQ(str) {
     document.getElementById("q0").innerHTML= str[0];
     document.getElementById("q1").innerHTML= str[1];
     document.getElementById("q2").innerHTML= str[2];
+    document.getElementById("q3").innerHTML= str[3];
+    document.getElementById("q4").innerHTML= str[4];
 }
 
 function speechLength(str) {
@@ -82,4 +87,25 @@ function speechLength(str) {
 function showTy() {
     document.getElementById("ty").style.display = "block";
     recognition.stop();
+}
+
+
+//linked list
+function L(val){
+    this.val = val;
+    this.next = null;
+}
+
+function createList(str){
+    let node, temp;
+    for(let i=str.length-1; i >= 0; i--){
+        if(!node)
+            node = new L(str[i]);
+        else {
+            temp = new L(str[i]);
+            temp.next = node;
+            node = temp;
+        }
+    }
+    return node;
 }
