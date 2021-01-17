@@ -6,7 +6,7 @@ if (!('webkitSpeechRecognition' in window)) {
     upgrade();
   } else {
     var recognition = new webkitSpeechRecognition();
-    recognition.continuous = true;
+    recognition.continuous = false;
     recognition.interimResults = true;
 }
 
@@ -62,9 +62,6 @@ function listen(str, node) {
 
     console.log(inputListNode.val);
 
-    //compare value
-    //if (node.val.localeCompare(shortenStr(currentWord, 1)) === 0 || node.next.val.localeCompare(currentWord) === 0) {
-    
     let j = 0, len = currentWord1.length;
         while (j < len) {
             if (inputListNode.val === node.val) {
