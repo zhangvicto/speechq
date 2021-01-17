@@ -49,16 +49,14 @@ function listen(str, node) {
         if (event.results[i].isFinal) {
             interim_transcript += event.results[i][0].transcript;
         }
-
+        console.log(interim_transcript);
         //}
         
         let currentWord0 = interim_transcript.trim();
         let currentWord1 = currentWord0.toLowerCase();
         let currentWord = currentWord1.split(" ");
         
-        //console.log(currentWord);
-        //console.log(node.val.localeCompare(currentWord));
-        //console.log(shortenStr(currentWord,1));
+
 
         let inputListNode = createList(currentWord);
 
@@ -80,14 +78,14 @@ function listen(str, node) {
                     }
                 j++
             }
-        
+        ++i;
     }
 
     //console.log(final_transcript);
     //final_transcript = capitalize(final_transcript);
     //final_span.innerHTML = linebreak(final_transcript);
     //interim_span.innerHTML = linebreak(interim_transcript);
-    ++i;
+    
   };
 }
 
