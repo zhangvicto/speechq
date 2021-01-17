@@ -36,11 +36,9 @@ function begin() {
 function listen(str, node) {
     recognition.onresult = function(event) {
     var interim_transcript = '';
-
-    //for (var i = event.resultIndex; i < event.results.length; ++i) {
-    
     var i = event.resultIndex;
     var resultLength = event.results.length;
+
     while (i < resultLength) {
         //if (event.results[i].isFinal) {
         //final_transcript += event.results[i][0].transcript;
@@ -52,40 +50,35 @@ function listen(str, node) {
         console.log(interim_transcript);
         //}
         
-        let currentWord0 = interim_transcript.trim();
-        let currentWord1 = currentWord0.toLowerCase();
-        let currentWord = currentWord1.split(" ");
-        
 
-
-        let inputListNode = createList(currentWord);
-
-        console.log(inputListNode.val);
-
-        //compare value
-        //if (node.val.localeCompare(shortenStr(currentWord, 1)) === 0 || node.next.val.localeCompare(currentWord) === 0) {
-        
-        let j = 0, len = currentWord1.length;
-            while (j < len) {
-                if (inputListNode.val === node.val) {
-
-                    startQ(str, node);
-                    node = node.next;
-                    inputListNode = inputListNode.next;
-
-                } else if (!node.next) {
-                        showTy();
-                    }
-                j++
-            }
         ++i;
     }
+    //here
+    let currentWord0 = interim_transcript.trim();
+    let currentWord1 = currentWord0.toLowerCase();
+    let currentWord = currentWord1.split(" ");
 
-    //console.log(final_transcript);
-    //final_transcript = capitalize(final_transcript);
-    //final_span.innerHTML = linebreak(final_transcript);
-    //interim_span.innerHTML = linebreak(interim_transcript);
+    let inputListNode = createList(currentWord);
+
+    console.log(inputListNode.val);
+
+    //compare value
+    //if (node.val.localeCompare(shortenStr(currentWord, 1)) === 0 || node.next.val.localeCompare(currentWord) === 0) {
     
+    let j = 0, len = currentWord1.length;
+        while (j < len) {
+            if (inputListNode.val === node.val) {
+
+                startQ(str, node);
+                node = node.next;
+                inputListNode = inputListNode.next;
+
+            } else if (!node.next) {
+                    showTy();
+                }
+            j++
+        }
+    //to here
   };
 }
 
