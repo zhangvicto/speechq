@@ -72,7 +72,7 @@ body {
     color:#7F7FD5;
 }
 
-input[type=text] {
+textarea {
     border-radius: 10px;
     border-color:#7F7FD5;;
     box-shadow: none;
@@ -81,7 +81,7 @@ input[type=text] {
     height:20vh;
 }
 
-input[type=text]:focus {
+textarea:focus {
     outline-width: 0;
 }
 

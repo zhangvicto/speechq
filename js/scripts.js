@@ -14,9 +14,7 @@ var final_transcript = '';
 
 function begin() { 
     var textbox = document.getElementById("inbox").value; 
-    //console.log(textbox); //test
     var str0 = textbox.match(/[^_\W]+/g).join(' ');
-    //console.log(str0);
     var str1 = str0.toLowerCase();
     var str = str1.split(" ");
 
@@ -33,8 +31,6 @@ function begin() {
     document.getElementById("textbox").style.display = "none";
     document.getElementById("contact").style.display = "none";
     document.getElementById("stats").style.display = "block";
-
-    //need some condition and then nextWord(); //find next word
 }
 
 function listen(str, node) {
@@ -42,26 +38,52 @@ function listen(str, node) {
     var interim_transcript = '';
 
     for (var i = event.resultIndex; i < event.results.length; ++i) {
-      //if (event.results[i].isFinal) {
+        //if (event.results[i].isFinal) {
         //final_transcript += event.results[i][0].transcript;
-      //} else {
-        interim_transcript += event.results[i][0].transcript;
-        
-      //}
+        //} else {
+
+        if (event.results[i].isFinal) {
+            interim_transcript += event.results[i][0].transcript;
+        }
+        //console.log(event.results);
+
+        //}
         //test
-        console.log(interim_transcript.trim());
+
         console.log(node.val);
         
         let currentWord0 = interim_transcript.trim();
-        let currentWord = currentWord0.toLowerCase;
+        let currentWord1 = currentWord0.toLowerCase();
+        let currentWord = currentWord1.split(" ");
+        
+        console.log(currentWord);
+        //console.log(node.val.localeCompare(currentWord));
+        //console.log(shortenStr(currentWord,1));
+
+        let inputListNode = createList(currentWord);
 
         //compare value
-        if (node.val.localeCompare(currentWord) === 0) {
-            startQ(str, node);
-            node = node.next;
-        } else if (!node.next) {
-            showTy();
+        //if (node.val.localeCompare(shortenStr(currentWord, 1)) === 0 || node.next.val.localeCompare(currentWord) === 0) {
+        
+        var i = 0, len = currentWord1.length;
+        let temp;
+            while (i < len) {
+                if (inputListNode.val === node.val) {
+
+                    startQ(str, node);
+                    temp = node;
+                    node = node.next;
+
+                } else if (!node.next) {
+                        showTy();
+                    }
+                i++
+            }
+        
+        for (let i = 0;i < currentWord.length;i++) {
+            
         }
+        
     }
 
     //console.log(final_transcript);
@@ -92,8 +114,8 @@ function showTy() {
     recognition.stop();
 }
 
-function shortenStr (str) {
-
+function shortenStr (str, wordNum) {
+        return str.split(" ").splice(0,wordNum).join(" ");
 }
 
 
