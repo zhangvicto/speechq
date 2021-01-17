@@ -49,10 +49,9 @@ function listen(str, node) {
         }
         console.log(interim_transcript);
         //}
-        
-
         ++i;
     }
+    
     //here
     let currentWord0 = interim_transcript.trim();
     let currentWord1 = currentWord0.toLowerCase();
