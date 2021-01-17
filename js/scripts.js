@@ -6,7 +6,7 @@ if (!('webkitSpeechRecognition' in window)) {
     upgrade();
   } else {
     var recognition = new webkitSpeechRecognition();
-    recognition.continuous = false;
+    recognition.continuous = true;
     recognition.interimResults = true;
 }
 
