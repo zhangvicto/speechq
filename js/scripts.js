@@ -52,11 +52,14 @@ function listen(str, node) {
         console.log(interim_transcript.trim());
         console.log(node.val);
         
+        let currentWord0 = interim_transcript.trim();
+        let currentWord = currentWord0.toLowerCase;
+
         //compare value
-        if (node.val.localeCompare(interim_transcript.trim().toLowerCase) === 0) {
+        if (node.val.localeCompare(currentWord) === 0) {
             startQ(str, node);
             node = node.next;
-        } else if (!node) {
+        } else if (!node.next) {
             showTy();
         }
     }
@@ -87,6 +90,10 @@ function showTy() {
     document.getElementById("ty").style.display = "block";
     document.getElementById("output").style.display = "none";
     recognition.stop();
+}
+
+function shortenStr (str) {
+
 }
 
 
