@@ -78,6 +78,7 @@ input[type=text] {
 
 #output {
     text-align: center;
+    margin-top: 10px;
 }
 
 #q0 {

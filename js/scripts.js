@@ -55,6 +55,7 @@ function listen(str, node) {
         //compare value
         if (node.val.localeCompare(interim_transcript.trim()) === 0) {
             startQ(str, node);
+            node = node.next;
         }
 
       }
