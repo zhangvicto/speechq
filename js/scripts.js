@@ -14,13 +14,13 @@ var final_transcript = '';
 
 function begin() { 
     var textbox = document.getElementById("inbox").value; 
-    console.log(textbox); //test
+    //console.log(textbox); //test
     var str0 = textbox.match(/[^_\W]+/g).join(' ');
-    console.log(str0);
+    //console.log(str0);
     var str1 = str0.toLowerCase();
     var str = str1.split(" ");
 
-    console.log(str);
+    //console.log(str);
 
     let node = createList(str);
 
@@ -31,6 +31,7 @@ function begin() {
     listen(str, node);
 
     document.getElementById("textbox").style.display = "none";
+    document.getElementById("contact").style.display = "none";
     document.getElementById("stats").style.display = "block";
 
     //need some condition and then nextWord(); //find next word
@@ -41,27 +42,26 @@ function listen(str, node) {
     var interim_transcript = '';
 
     for (var i = event.resultIndex; i < event.results.length; ++i) {
-      if (event.results[i].isFinal) {
-        final_transcript += event.results[i][0].transcript;
-      } else {
+      //if (event.results[i].isFinal) {
+        //final_transcript += event.results[i][0].transcript;
+      //} else {
         interim_transcript += event.results[i][0].transcript;
+        
+      //}
         //test
-        //document.getElementById("q0").innerHTML= interim_transcript;
-
-        //console.log(node.val.localeCompare(interim_transcript));
-        //console.log(interim_transcript);
-        //console.log(node.val);
+        console.log(interim_transcript.trim());
+        console.log(node.val);
         
         //compare value
-        if (node.val.localeCompare(interim_transcript.trim()) === 0) {
+        if (node.val.localeCompare(interim_transcript.trim().toLowerCase) === 0) {
             startQ(str, node);
             node = node.next;
+        } else if (!node) {
+            showTy();
         }
-
-      }
     }
 
-    console.log(final_transcript);
+    //console.log(final_transcript);
     //final_transcript = capitalize(final_transcript);
     //final_span.innerHTML = linebreak(final_transcript);
     //interim_span.innerHTML = linebreak(interim_transcript);
@@ -85,6 +85,7 @@ function speechLength(str) {
 
 function showTy() {
     document.getElementById("ty").style.display = "block";
+    document.getElementById("output").style.display = "none";
     recognition.stop();
 }
 
