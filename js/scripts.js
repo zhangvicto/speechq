@@ -37,7 +37,11 @@ function listen(str, node) {
     recognition.onresult = function(event) {
     var interim_transcript = '';
 
-    for (var i = event.resultIndex; i < event.results.length; ++i) {
+    //for (var i = event.resultIndex; i < event.results.length; ++i) {
+    
+    var i = event.resultIndex;
+    var resultLength = event.results.length;
+    while (i < resultLength) {
         //if (event.results[i].isFinal) {
         //final_transcript += event.results[i][0].transcript;
         //} else {
@@ -45,44 +49,37 @@ function listen(str, node) {
         if (event.results[i].isFinal) {
             interim_transcript += event.results[i][0].transcript;
         }
-        //console.log(event.results);
 
         //}
-        //test
-
-        console.log(node.val);
         
         let currentWord0 = interim_transcript.trim();
         let currentWord1 = currentWord0.toLowerCase();
         let currentWord = currentWord1.split(" ");
         
-        console.log(currentWord);
+        //console.log(currentWord);
         //console.log(node.val.localeCompare(currentWord));
         //console.log(shortenStr(currentWord,1));
 
         let inputListNode = createList(currentWord);
 
+        console.log(inputListNode.val);
+
         //compare value
         //if (node.val.localeCompare(shortenStr(currentWord, 1)) === 0 || node.next.val.localeCompare(currentWord) === 0) {
         
-        var i = 0, len = currentWord1.length;
-        let temp;
-            while (i < len) {
+        let j = 0, len = currentWord1.length;
+            while (j < len) {
                 if (inputListNode.val === node.val) {
 
                     startQ(str, node);
-                    temp = node;
                     node = node.next;
+                    inputListNode = inputListNode.next;
 
                 } else if (!node.next) {
                         showTy();
                     }
-                i++
+                j++
             }
-        
-        for (let i = 0;i < currentWord.length;i++) {
-            
-        }
         
     }
 
@@ -90,6 +87,7 @@ function listen(str, node) {
     //final_transcript = capitalize(final_transcript);
     //final_span.innerHTML = linebreak(final_transcript);
     //interim_span.innerHTML = linebreak(interim_transcript);
+    ++i;
   };
 }
 
